@@ -49,11 +49,21 @@ body {
     margin-top: 25px;
 }
 
+.player-one-name,
+.player-two-name {
+    margin-bottom: 0;
+}
+
 .player-one-counter, 
 .player-two-counter {
     height: 65px;
     padding: 10px;
 } 
+
+.player-one-count, 
+.player-two-count {
+    height: 30px;
+}
 
 .player-two {
     text-align: right;
@@ -69,6 +79,13 @@ body {
     width: 300px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.picPlayerOne,
+.picPlayerTwo {
+    margin: auto;
+    max-height: 60px;
+    max-width: 60px; 
 }
 
 .case {
