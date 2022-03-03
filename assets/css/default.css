@@ -45,10 +45,14 @@ body {
 /*=============| P L A Y E R |=============*/
 /*=========================================*/
 
+.players-and-counter {
+    margin-top: 25px;
+}
+
 .player-one-counter, 
 .player-two-counter {
-    height: 50px;
-    padding: 5px;
+    height: 65px;
+    padding: 10px;
 } 
 
 .player-two {
@@ -67,9 +71,10 @@ body {
     margin-right: auto;
 }
 
-td {
+.case {
     height: 100px;
     width: 100px;
+    text-align: center;
 }
 
 .vert {
@@ -80,4 +85,26 @@ td {
 .horiz {
     border-top: var(--border);
     border-bottom: var(--border);  
+}
+
+/*=========================================*/
+/*=============| B U T T O N S |===========*/
+/*=========================================*/
+
+.restart-btn-col{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+.button {
+    height: 65px;
+}
+
+.player-btn-row {
+    margin-top: 20px;
+} 
+
+.one-btn-col {
+    text-align: right;
 }
