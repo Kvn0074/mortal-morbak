@@ -1,12 +1,15 @@
 /*=========================================*/
 /*=============| G L O B A L |=============*/
 /*=========================================*/
-
+:root {
+    --border : 5px solid rgba(255, 255, 255, 0.3);
+}
 body {
     background-image: url(../pics/wallBackGround.jpg);
     background-size: cover;
     height: 100vh;
     min-width: 375px;
+    color: rgb(157, 255, 0);
 }
 
 
@@ -36,4 +39,45 @@ body {
 .game-music-button {
     height: 50px;
     margin-right: 20px;
+}
+
+/*=========================================*/
+/*=============| P L A Y E R |=============*/
+/*=========================================*/
+
+.player-one-counter, 
+.player-two-counter {
+    height: 50px;
+    padding: 5px;
+} 
+
+.player-two {
+    text-align: right;
+}
+
+/*=========================================*/
+/*=============| T H E  G R I D |==========*/
+/*=========================================*/
+
+
+.the-grid {
+    height: 300px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    height: 100px;
+    width: 100px;
+}
+
+.vert {
+    border-left: var(--border);
+    border-right: var(--border);
+}
+
+.horiz {
+    border-top: var(--border);
+    border-bottom: var(--border);  
 }
