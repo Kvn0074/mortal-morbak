@@ -178,11 +178,15 @@ function selectCase (theCase, playerA, playerB) {
             };
 
             if(playerB.ia && !playerA.checkVictory()){
-                setTimeout(evilChoice, 1000, playerA, playerB);
+                console.log('je suis ici');
+                setTimeout(evilChoice, 1000, playerA, playerB)
+                
+            }
+              /*  setTimeout(evilChoice, 1000, playerA, playerB);
                 playerA.current = true;
                 playerB.current = false;
                 lightName();
-            }
+            } */
     }
 }
 
@@ -291,8 +295,20 @@ function drawChecker() {
 
 function restart() {
     if(secondPlayer.ia){
-        clearAll();
-        secondPlayer.ia = true;
+     for(let i=0; i < cases.length; i++){
+        cases[i].removeAttribute(firstPlayer.attr);
+        cases[i].removeAttribute(secondPlayer.attr);
+        cases[i].innerHTML = "";
+        }
+    victoryMessage.style.display = 'none';
+    theWinnerIs.textContent = "";
+    drawMessage.style.display = 'none';
+
+    firstPlayer.current = true;
+    secondPlayer.current = false;
+    lightName();
+
+
     } else {
     for(let i=0; i < cases.length; i++){
       cases[i].removeAttribute(firstPlayer.attr);
@@ -347,10 +363,12 @@ function lightName(){
     if(firstPlayer.current){
         playerOneName.className = "neon";
         playerTwoName.className  = "";
+        console.log('je suis dans lightname player 1 true');
     }
     else{
         playerTwoName.className  = "neon";
         playerOneName.className = "";
+        console.log('je suis dans lightname player 2 true');
     };
 };
 
