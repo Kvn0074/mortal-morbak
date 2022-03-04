@@ -3,7 +3,14 @@
 /*=========================================*/
 :root {
     --border : 5px solid rgba(255, 255, 255, 0.3);
+    --textShadow : #ffd200 0px 3px;
 }
+
+@font-face {
+    font-family: "Pixel";
+    src: url('../font/Cave-Story.ttf') format('truetype');
+  }
+
 body {
     background-image: url(../pics/wallBackGround.jpg);
     background-size: cover;
@@ -134,4 +141,33 @@ body {
     text-align: center;
     margin: 60px;
     margin-bottom: 10px;
+}
+
+
+.flying-victory {
+    display: none;
+    position:absolute;
+    top:calc(50% - 65px);
+    left:calc(50% - 150px);
+    
+}
+
+.victory-message {
+    text-align: center;
+    height:40px;
+    width:150px;
+    position: absolute;
+    top: calc(50% + 10px);
+    left: calc(50% - 75px);
+}
+
+.the-winner-is {
+    font-family: 'Pixel', arial, sans-serif;
+    font-size: 3em;
+    color: white;
+    text-shadow: var(--textShadow);
+}
+
+.victory-pic{
+    width: 300px;
 }

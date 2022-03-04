@@ -25,7 +25,7 @@ class player {
     }
 
     createImg(){
-        let img       = document.createElement("img");
+        let img       = document.createElement('img');
         img.src       = this.sign;
         img.className = this.picClass;
         return img;
@@ -88,6 +88,7 @@ class player {
               return true;
             }
       }
+
 }
 
 let firstPlayer = new player (
@@ -115,11 +116,65 @@ let secondPlayer = new player (
 ============================================================================= */
 
 /* =============================================================================
-== 1 =========== C A S E  S E L E C T I O N ================================ 1 =
+== 1 =========== V A R I A B L E S ========================================= 1 =
 ============================================================================= */
 
-let error = document.getElementById('error');
-let cases = document.getElementsByClassName('case')
+let errorSound   = document.getElementById('error-sound');
+let victorySound = document.getElementById('victory-sound');
+let clearSound   = document.getElementById('clear-sound');
+
+let victoryMessage = document.querySelector('.flying-victory');
+
+
+let theWinnerIs = document.getElementsByClassName('the-winner-is');
+let cases = document.getElementsByClassName('case');
+
+let countOne = document.getElementById('player-one');
+let countTwo = document.getElementById('player-two');
+
+
+/* =============================================================================
+============================================================================= */
+
+/* =============================================================================
+== 1 =========== C O U N T E R ============================================= 1 =
+============================================================================= */
+
+function counter(player) {
+    player.wins ++
+  
+    if (player.wins <= 5) {
+  
+      switch (player.id) {
+        case 1:
+            countOne.src = `assets/pics/j1-${player.wins}.png`;
+            break;
+  
+        case 2:
+            countTwo.src = `assets/pics/j2-${player.wins}.png`;
+            break;
+        default:
+            break;
+       }
+    }
+
+    else  if(player.wins ==  6){
+        player.wins = 1;
+
+        switch (player.id) {
+            case 1:
+                countOne.src = `assets/pics/j1-${player.wins}.png`;
+                break;
+      
+            case 2:
+                countTwo.src = `assets/pics/j2-${player.wins}.png`;
+                break;
+            default:
+                break;
+           }
+    }
+  }
+
 /* =============================================================================
 ============================================================================= */
 
@@ -140,14 +195,15 @@ function selectCase (theCase, playerA, playerB) {
 
     if (theCase.getAttribute(playerA.attr) ||
         theCase.getAttribute(playerB.attr)) {
-        error.play();
+        errorSound.play();
     } else {
         theCase.appendChild(playerA.createImg());
         theCase.setAttribute(playerA.attr, 'true');
         playerA.current = false;
         playerB.current = true;
             if(playerA.checkVictory()){
-                console.log(playerA.name + 'a gagner');
+                victory(playerA);
+                counter(playerA);
             };
 
 
@@ -159,7 +215,37 @@ function selectCase (theCase, playerA, playerB) {
 ============================================================================= */
 
 
+/* =============================================================================
+== 1 =========== V I C T O R Y  A N N O U N C E ============================ 1 =
+============================================================================= */
 
+function victory(player){
+    victoryMessage.style.display = 'block'
+    theWinnerIs.textContent = player.name;
+    victorySound.play();
+  }
+
+/* =============================================================================
+============================================================================= */
+
+/* =============================================================================
+== 1 =========== V I C T O R Y  A N N O U N C E ============================ 1 =
+============================================================================= */
+
+function restart() {
+    for(let i=0; i < cases.length; i++){
+      cases[i].removeAttribute(firstPlayer.attr);
+      cases[i].removeAttribute(secondPlayer.attr);
+      cases[i].innerHTML = "";
+    }
+    victoryMessage.style.display = 'none';
+    theWinnerIs.textContent = "";
+    /*drawImg.style.display = 'none';
+    fight.play();*/
+  }
+
+/* =============================================================================
+============================================================================= */
 
 
 

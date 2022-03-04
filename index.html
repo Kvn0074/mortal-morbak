@@ -41,13 +41,13 @@
             <div class="col-6 player-one">
                 <h2 class="player-one-name">Player One</h2>
                 <div class="player-one-counter">
-                    <img class="player-one-count">
+                    <img id="player-one" class="player-one-count">
                 </div>
             </div>
             <div class="col-6 player-two">
                 <h2 class="player-two-name">Player Two</h2>
                 <div class="player-two-counter">
-                    <img src="assets/pics/j2-5.png" class="player-two-count">
+                    <img id="player-two" class="player-two-count">
                 </div>
             </div>
         </div>
@@ -87,7 +87,8 @@
         <div class="row restart-btn-row">
             <div class="col-12 restart-btn-col">
 
-                <img class="button restart-btn" src="assets/pics/buttonReset.png" alt="Bouton rejouer">
+                <img class="button restart-btn" src="assets/pics/buttonReset.png" alt="Bouton rejouer"
+                onmouseover="this.src='assets/pics/buttonResetclick.png'" onmouseout="this.src='assets/pics/buttonReset.png'">
 
             </div>
         </div>
@@ -97,10 +98,12 @@
         <div class="row player-btn-row">
 
             <div class="col-6 one-btn-col">
-                <img class="button one-btn" src="assets/pics/button1.png" alt="Bouton jeu solo">
+                <img class="button one-btn" src="assets/pics/button1.png" alt="Bouton jeu solo"
+                onmouseover="this.src='assets/pics/button1click.png'" onmouseout="this.src='assets/pics/button1.png'">
             </div>
             <div class="col-6 two-btn-col">
-                <img class="button two-btn" src="assets/pics/button2.png" alt="Bouton jeu solo">
+                <img class="button two-btn" src="assets/pics/button2.png" alt="Bouton jeu solo"
+                onmouseover="this.src='assets/pics/button2click.png'" onmouseout="this.src='assets/pics/button2.png'">
             </div>
 
         </div>
@@ -122,7 +125,20 @@
     <!--==========| A U D I O |==========================-->
     <!--=================================================-->
 
-<audio id="error" src="assets/sounds/8-bit-error.wav"></audio>
+<audio id="error-sound" src="assets/sounds/8-bit-error.wav"></audio>
+<audio id="victory-sound" src="assets/sounds/flawlessVictory.mp3"></audio>
+<audio id="clear-sound"src="assets/sounds/clearGame.wav"></audio>
+
+    <!--=================================================-->
+    <!--==========| F L Y I N G |========================-->
+    <!--=================================================-->
+
+<div class="flying-victory" onclick="restart()">
+    <img class="victory-pic" src="assets/pics/VictoryTitle.png" alt="victory !">
+    <div class="victory-message">
+        <h2 class="the-winner-is"></h2>
+    </div>
+</div>
 
     <!--=================================================-->
     <!--==========| S C R I P T |========================-->
