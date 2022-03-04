@@ -125,3 +125,13 @@ body {
 .one-btn-col {
     text-align: right;
 }
+
+/*=========================================*/
+/*=============| F O O T E R |=============*/
+/*=========================================*/
+
+.footer-text {
+    text-align: center;
+    margin: 60px;
+    margin-bottom: 10px;
+}
