@@ -110,7 +110,7 @@ let secondPlayer = new player (
     "Player 2",
     false,
     2,
-    false,
+    true,
     "assets/pics/skuPic.png",
     "byTwo",
     "picPlayerTwo"
@@ -177,9 +177,35 @@ function selectCase (theCase, playerA, playerB) {
                 drawAnnouncer()
             };
 
-
+            if(playerB.ia && !playerA.checkVictory()){
+                setTimeout(evilChoice, 1000, playerA, playerB);
+                playerA.current = true;
+                playerB.current = false;
+                lightName();
+            }
     }
 }
+
+
+function evilChoice (playerA, playerB){
+        let random = Math.floor(Math.random() * 9);
+        if(cases[random].getAttribute(playerA.attr) || cases[random].getAttribute(playerB.attr)){
+            evilChoice(playerA, playerB);
+        } else {
+            cases[random].appendChild(playerB.createImg());
+            cases[random].setAttribute(playerB.attr, 'true');
+            playerA.current = true;
+            playerB.current = false;
+            lightName();
+            if(playerB.checkVictory()){
+                victory(playerB);
+                counter(playerB);
+            } else if(drawChecker()){
+                drawAnnouncer()
+            };
+        }
+       
+};
 
 /* =============================================================================
 ============================================================================= */
@@ -264,6 +290,10 @@ function drawChecker() {
     /* ____| RESTART FUNCTION |____ */
 
 function restart() {
+    if(secondPlayer.ia){
+        clearAll();
+        secondPlayer.ia = true;
+    } else {
     for(let i=0; i < cases.length; i++){
       cases[i].removeAttribute(firstPlayer.attr);
       cases[i].removeAttribute(secondPlayer.attr);
@@ -272,7 +302,8 @@ function restart() {
     victoryMessage.style.display = 'none';
     theWinnerIs.textContent = "";
     drawMessage.style.display = 'none';
-  }
+    }
+  };
 
 
     /* ____| CLEAR FUNCTION |____ */
