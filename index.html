@@ -22,7 +22,8 @@
     </div>
 
     <div class="game-music">
-        <img class="game-music-button" src="assets/pics/speakerNone.png" alt="speaker">
+        <img class="game-music-button" src="assets/pics/speakerNone.png" alt="speaker"
+        onclick = "letMusikPlay()">
         <audio class="music" src="assets/sounds/gillTheme8bit.mp3"></audio>
     </div>
 
@@ -88,7 +89,8 @@
             <div class="col-12 restart-btn-col">
 
                 <img class="button restart-btn" src="assets/pics/buttonReset.png" alt="Bouton rejouer"
-                onmouseover="this.src='assets/pics/buttonResetclick.png'" onmouseout="this.src='assets/pics/buttonReset.png'">
+                onmouseover="this.src='assets/pics/buttonResetclick.png'" onmouseout="this.src='assets/pics/buttonReset.png'"
+                onclick="clearAll()">
 
             </div>
         </div>
@@ -128,6 +130,7 @@
 <audio id="error-sound" src="assets/sounds/8-bit-error.wav"></audio>
 <audio id="victory-sound" src="assets/sounds/flawlessVictory.mp3"></audio>
 <audio id="clear-sound"src="assets/sounds/clearGame.wav"></audio>
+<audio id="music-sound" src="assets/sounds/gillTheme8bit.mp3"></audio>
 
     <!--=================================================-->
     <!--==========| F L Y I N G |========================-->

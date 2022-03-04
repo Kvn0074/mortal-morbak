@@ -3,7 +3,12 @@
 ================================================================================
 
     1 | Class Construction.
-
+    2 | Variables intion.
+    3 | Case Selection Function.
+    4 | Counter Function.
+    5 | Announcer (Draw / Victory).
+    6 | Restart Clean.
+    7 | Style & Sound.
 
 ================================================================================
 ============================================================================= */
@@ -116,29 +121,71 @@ let secondPlayer = new player (
 ============================================================================= */
 
 /* =============================================================================
-== 1 =========== V A R I A B L E S ========================================= 1 =
+== 2 =========== V A R I A B L E S ========================================= 2 =
 ============================================================================= */
 
 let errorSound   = document.getElementById('error-sound');
 let victorySound = document.getElementById('victory-sound');
 let clearSound   = document.getElementById('clear-sound');
+let musicSound   = document.getElementById('music-sound');
 
 let victoryMessage = document.querySelector('.flying-victory');
 let drawMessage    = document.querySelector('.flying-draw');
+let musicButton = document.querySelector('.game-music-button');
 
 
 let theWinnerIs = document.getElementsByClassName('the-winner-is');
 let cases = document.getElementsByClassName('case');
 
+
 let countOne = document.getElementById('player-one');
 let countTwo = document.getElementById('player-two');
+let playerOneName = document.getElementById('player-one-name');
+let playerTwoName = document.getElementById('player-two-name');
 
 
 /* =============================================================================
 ============================================================================= */
 
 /* =============================================================================
-== 1 =========== C O U N T E R ============================================= 1 =
+== 3 =========== C A S E  S E L E C T I O N ================================ 3 =
+============================================================================= */
+
+function selectCase (theCase, playerA, playerB) {
+
+    if(firstPlayer.current){
+        playerA = firstPlayer;
+        playerB = secondPlayer;
+    } else {
+        playerA = secondPlayer;
+        playerB = firstPlayer;
+    }
+
+    if (theCase.getAttribute(playerA.attr) ||
+        theCase.getAttribute(playerB.attr)) {
+        errorSound.play();
+    } else {
+        theCase.appendChild(playerA.createImg());
+        theCase.setAttribute(playerA.attr, 'true');
+        playerA.current = false;
+        playerB.current = true;
+        lightName();
+            if(playerA.checkVictory()){
+                victory(playerA);
+                counter(playerA);
+            } else if(drawChecker()){
+                drawAnnouncer()
+            };
+
+
+    }
+}
+
+/* =============================================================================
+============================================================================= */
+
+/* =============================================================================
+== 4 =========== C O U N T E R ============================================= 4 =
 ============================================================================= */
 
 function counter(player) {
@@ -179,48 +226,11 @@ function counter(player) {
 /* =============================================================================
 ============================================================================= */
 
-
 /* =============================================================================
-== 1 =========== C A S E  S E L E C T I O N ================================ 1 =
+== 5 =========== A N N O U N C E R ========================================= 5 =
 ============================================================================= */
 
-function selectCase (theCase, playerA, playerB) {
-
-    if(firstPlayer.current){
-        playerA = firstPlayer;
-        playerB = secondPlayer;
-    } else {
-        playerA = secondPlayer;
-        playerB = firstPlayer;
-    }
-
-    if (theCase.getAttribute(playerA.attr) ||
-        theCase.getAttribute(playerB.attr)) {
-        errorSound.play();
-    } else {
-        theCase.appendChild(playerA.createImg());
-        theCase.setAttribute(playerA.attr, 'true');
-        playerA.current = false;
-        playerB.current = true;
-            if(playerA.checkVictory()){
-                victory(playerA);
-                counter(playerA);
-            } else if(drawChecker()){
-                drawAnnouncer()
-            };
-
-
-    }
-}
-
-
-/* =============================================================================
-============================================================================= */
-
-
-/* =============================================================================
-== 1 =========== V I C T O R Y  A N N O U N C E ============================ 1 =
-============================================================================= */
+    /* ____| VICTORY ANNOUNCER |____ */
 
 function victory(player){
     victoryMessage.style.display = 'block'
@@ -228,30 +238,7 @@ function victory(player){
     victorySound.play();
   }
 
-/* =============================================================================
-============================================================================= */
-
-/* =============================================================================
-== 1 =========== V I C T O R Y  A N N O U N C E ============================ 1 =
-============================================================================= */
-
-function restart() {
-    for(let i=0; i < cases.length; i++){
-      cases[i].removeAttribute(firstPlayer.attr);
-      cases[i].removeAttribute(secondPlayer.attr);
-      cases[i].innerHTML = "";
-    }
-    victoryMessage.style.display = 'none';
-    theWinnerIs.textContent = "";
-    drawMessage.style.display = 'none';
-  }
-
-/* =============================================================================
-============================================================================= */
-
-/* =============================================================================
-== 1 =========== D R A W  C H E C K  / A N N O U N C E ===================== 1 =
-============================================================================= */
+    /* ____| DRAW CHEKER / ANNOUNCER |____*/
 
 function drawChecker() {
     let img1 = document.getElementsByClassName('picPlayerOne');
@@ -270,5 +257,87 @@ function drawChecker() {
 /* =============================================================================
 ============================================================================= */
 
+/* =============================================================================
+== 6 =========== R E S T A R T  / C L E A N ================================ 6 =
+============================================================================= */
 
+    /* ____| RESTART FUNCTION |____ */
+
+function restart() {
+    for(let i=0; i < cases.length; i++){
+      cases[i].removeAttribute(firstPlayer.attr);
+      cases[i].removeAttribute(secondPlayer.attr);
+      cases[i].innerHTML = "";
+    }
+    victoryMessage.style.display = 'none';
+    theWinnerIs.textContent = "";
+    drawMessage.style.display = 'none';
+  }
+
+
+    /* ____| CLEAR FUNCTION |____ */
+
+  function clearAll() {
+
+    for(let i=0; i < cases.length; i++){
+      cases[i].removeAttribute(firstPlayer.attr);
+      cases[i].removeAttribute(secondPlayer.attr);
+      cases[i].innerHTML = "";
+    }
+    victoryMessage.style.display = 'none';
+    theWinnerIs.textContent = "";
+    drawMessage.style.display = 'none';
+
+    firstPlayer.current = true;
+    firstPlayer.wins = 0;
+  
+
+    secondPlayer.current = false;
+    secondPlayer.wins = 0;
+
+    countOne.src = "";
+    countTwo.src = "";
+
+    lightName();
+
+    /*clearSound.play();*/
+  }
+
+/* =============================================================================
+============================================================================= */
+
+/* =============================================================================
+== 7 =========== S T Y L E  A N D  S O U N D =============================== 7 =
+============================================================================= */
+
+    /* ____| light name FUNCTION |____ */
+
+function lightName(){
+    if(firstPlayer.current){
+        playerOneName.className = "neon";
+        playerTwoName.className  = "";
+    }
+    else{
+        playerTwoName.className  = "neon";
+        playerOneName.className = "";
+    };
+};
+
+    /* ____| Music FUNCTION |____ */
+
+function letMusikPlay(){
+
+    if(musicSound.paused){
+        musicButton.src = 'assets/pics/speaker.png';
+        musicSound.play();
+      
+    }
+    else {
+        musicButton.src ='assets/pics/speakerNone.png';
+        musicSound.pause();
+    }
+  };
+
+/* =============================================================================
+============================================================================= */
 
