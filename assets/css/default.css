@@ -6,6 +6,7 @@
     --shadowYellow : #ffd200 0px 3px;
     --shadowGreen : #0f5a00 0px 3px;
     --shadowBlue : #003e5a 0px 3px;
+    --fonts : 'Pixel', arial, sans-serif;
 }
 
 @keyframes radiation {
@@ -35,7 +36,7 @@
 body {
     background-image: url(../pics/wallBackGround.jpg);
     background-size: cover;
-    font-family: 'Pixel', arial, sans-serif;
+    font-family: var(--fonts);
     height: 100vh;
     min-width: 375px;
     color: rgb(157, 255, 0);
@@ -200,13 +201,11 @@ body {
 }
 
 .the-winner-is {
-    font-family: 'Pixel', arial, sans-serif;
+    font-family: var(--fonts);
     font-size: 3em;
     color: white;
-    text-shadow: var(--textShadow);
+    text-shadow: var(--shadowYellow);
 }
-
-
 
 /*=========================================*/
 /*=============| F O O T E R |=============*/
@@ -220,4 +219,5 @@ body {
     margin-bottom: 10px;
 }
 
-
+/*=========================================*/
+/*=========================================*/
