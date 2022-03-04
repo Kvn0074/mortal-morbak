@@ -39,13 +39,13 @@
 
         <div class="row players-and-counter">
             <div class="col-6 player-one">
-                <h2 class="player-one-name">Player One</h2>
+                <h2 id="player-one-name" class="neon">Player One</h2>
                 <div class="player-one-counter">
                     <img id="player-one" class="player-one-count">
                 </div>
             </div>
             <div class="col-6 player-two">
-                <h2 class="player-two-name">Player Two</h2>
+                <h2 id="player-two-name">Player Two</h2>
                 <div class="player-two-counter">
                     <img id="player-two" class="player-two-count">
                 </div>
@@ -138,6 +138,10 @@
     <div class="victory-message">
         <h2 class="the-winner-is"></h2>
     </div>
+</div>
+
+<div class="flying-draw" onclick="restart()">
+    <img class="draw-pic" src="assets/pics/draw.png" alt="draw !">
 </div>
 
     <!--=================================================-->

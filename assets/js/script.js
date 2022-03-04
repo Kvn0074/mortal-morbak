@@ -124,6 +124,7 @@ let victorySound = document.getElementById('victory-sound');
 let clearSound   = document.getElementById('clear-sound');
 
 let victoryMessage = document.querySelector('.flying-victory');
+let drawMessage    = document.querySelector('.flying-draw');
 
 
 let theWinnerIs = document.getElementsByClassName('the-winner-is');
@@ -204,6 +205,8 @@ function selectCase (theCase, playerA, playerB) {
             if(playerA.checkVictory()){
                 victory(playerA);
                 counter(playerA);
+            } else if(drawChecker()){
+                drawAnnouncer()
             };
 
 
@@ -240,8 +243,28 @@ function restart() {
     }
     victoryMessage.style.display = 'none';
     theWinnerIs.textContent = "";
-    /*drawImg.style.display = 'none';
-    fight.play();*/
+    drawMessage.style.display = 'none';
+  }
+
+/* =============================================================================
+============================================================================= */
+
+/* =============================================================================
+== 1 =========== D R A W  C H E C K  / A N N O U N C E ===================== 1 =
+============================================================================= */
+
+function drawChecker() {
+    let img1 = document.getElementsByClassName('picPlayerOne');
+    let img2 = document.getElementsByClassName('picPlayerTwo');
+  
+      if (img1.length + img2.length == 9){
+        return true;
+      }
+  }
+
+  function drawAnnouncer(){
+    drawMessage.style.display = 'block';
+    /*drawBip.play();*/
   }
 
 /* =============================================================================

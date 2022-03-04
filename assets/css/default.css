@@ -6,6 +6,25 @@
     --textShadow : #ffd200 0px 3px;
 }
 
+@keyframes radiation {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  
+      text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #0fa,
+      0 0 80px #0fa,
+      0 0 90px #0fa,
+      0 0 100px #0fa,
+      0 0 150px #0fa;
+    }
+  
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+  }
+
 @font-face {
     font-family: "Pixel";
     src: url('../font/Cave-Story.ttf') format('truetype');
@@ -56,9 +75,13 @@ body {
     margin-top: 25px;
 }
 
-.player-one-name,
-.player-two-name {
+#player-one-name,
+#player-two-name {
     margin-bottom: 0;
+}
+
+.neon {
+    animation: 1s linear 0s infinite radiation; 
 }
 
 .player-one-counter, 
@@ -134,15 +157,14 @@ body {
 }
 
 /*=========================================*/
-/*=============| F O O T E R |=============*/
+/*=============| F L Y I N G |=============*/
 /*=========================================*/
-
-.footer-text {
-    text-align: center;
-    margin: 60px;
-    margin-bottom: 10px;
+.flying-draw{
+    display: none;
+    position:absolute;
+    top:calc(50% - 210px);
+    left:calc(50% - 150px); 
 }
-
 
 .flying-victory {
     display: none;
@@ -161,6 +183,11 @@ body {
     left: calc(50% - 75px);
 }
 
+.victory-pic,
+.draw-pic {
+    width: 300px;
+}
+
 .the-winner-is {
     font-family: 'Pixel', arial, sans-serif;
     font-size: 3em;
@@ -168,6 +195,16 @@ body {
     text-shadow: var(--textShadow);
 }
 
-.victory-pic{
-    width: 300px;
+
+
+/*=========================================*/
+/*=============| F O O T E R |=============*/
+/*=========================================*/
+
+.footer-text {
+    text-align: center;
+    margin: 60px;
+    margin-bottom: 10px;
 }
+
+
