@@ -30,6 +30,64 @@ class player {
         img.className = this.picClass;
         return img;
     }
+
+    checkVictory () {
+        if (cases[0].getAttribute(this.attr) &&
+            cases[1].getAttribute(this.attr) &&
+            cases[2].getAttribute(this.attr))
+            {
+          return true;
+        }
+      
+        else if (cases[3].getAttribute(this.attr) &&
+                 cases[4].getAttribute(this.attr) &&
+                 cases[5].getAttribute(this.attr))
+                 {
+              return true;
+            }
+      
+        else if (cases[6].getAttribute(this.attr) &&
+                 cases[7].getAttribute(this.attr) &&
+                 cases[8].getAttribute(this.attr))
+                 {
+              return true;
+            }
+      
+        else if (cases[0].getAttribute(this.attr) &&
+                 cases[3].getAttribute(this.attr) &&
+                 cases[6].getAttribute(this.attr))
+                 {
+              return true;
+            }
+      
+        else if (cases[1].getAttribute(this.attr) &&
+                 cases[4].getAttribute(this.attr) &&
+                 cases[7].getAttribute(this.attr))
+                 {
+              return true;
+            }
+      
+        else if (cases[2].getAttribute(this.attr) &&
+                 cases[5].getAttribute(this.attr) &&
+                 cases[8].getAttribute(this.attr))
+                 {
+              return true;
+            }
+      
+        else if (cases[8].getAttribute(this.attr) &&
+                 cases[4].getAttribute(this.attr) &&
+                 cases[0].getAttribute(this.attr))
+                 {
+              return true;
+            }
+      
+        else if (cases[2].getAttribute(this.attr) &&
+                 cases[4].getAttribute(this.attr) &&
+                 cases[6].getAttribute(this.attr))
+                 {
+              return true;
+            }
+      }
 }
 
 let firstPlayer = new player (
@@ -61,6 +119,7 @@ let secondPlayer = new player (
 ============================================================================= */
 
 let error = document.getElementById('error');
+let cases = document.getElementsByClassName('case')
 /* =============================================================================
 ============================================================================= */
 
@@ -83,10 +142,15 @@ function selectCase (theCase, playerA, playerB) {
         theCase.getAttribute(playerB.attr)) {
         error.play();
     } else {
-    theCase.appendChild(playerA.createImg());
-    theCase.setAttribute(playerA.attr, 'true');
-    playerA.current = false;
-    playerB.current = true;
+        theCase.appendChild(playerA.createImg());
+        theCase.setAttribute(playerA.attr, 'true');
+        playerA.current = false;
+        playerB.current = true;
+            if(playerA.checkVictory()){
+                console.log(playerA.name + 'a gagner');
+            };
+
+
     }
 }
 
