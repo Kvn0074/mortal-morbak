@@ -8,7 +8,9 @@
     4 | Counter Function.
     5 | Announcer (Draw / Victory).
     6 | Restart Clean.
-    7 | Style & Sound.
+    7 | Botmode Lab.
+    8 | Player mode selection.
+    9 | Style & Sound.
 
 ================================================================================
 ============================================================================= */
@@ -18,11 +20,11 @@
 ============================================================================= */
 
 class player {
-    constructor (name, current, id, ia, sign, attr, picClass){
+    constructor (name, current, id, botMode, sign, attr, picClass){
         this.name     = name;
         this.current  = current;
         this.id       = id;
-        this.ia       = ia;
+        this.botMode  = botMode;
         this.sign     = sign;
         this.attr     = attr;
         this.picClass = picClass;
@@ -97,7 +99,7 @@ class player {
 }
 
 let firstPlayer = new player (
-    "Player 1",
+    "Player One",
     true,
     1,
     false,
@@ -107,10 +109,10 @@ let firstPlayer = new player (
 );
 
 let secondPlayer = new player (
-    "Player 2",
+    "Player Two",
     false,
     2,
-    true,
+    false,
     "assets/pics/skuPic.png",
     "byTwo",
     "picPlayerTwo"
@@ -132,11 +134,11 @@ let musicSound   = document.getElementById('music-sound');
 let victoryMessage = document.querySelector('.flying-victory');
 let drawMessage    = document.querySelector('.flying-draw');
 let musicButton = document.querySelector('.game-music-button');
+let theWinnerIs = document.querySelector('.the-winner-is');
+let buttonOnePlayer = document.querySelector('.one-btn'); 
+let buttonTwoPlayers = document.querySelector('.two-btn');
 
-
-let theWinnerIs = document.getElementsByClassName('the-winner-is');
 let cases = document.getElementsByClassName('case');
-
 
 let countOne = document.getElementById('player-one');
 let countTwo = document.getElementById('player-two');
@@ -177,39 +179,13 @@ function selectCase (theCase, playerA, playerB) {
                 drawAnnouncer()
             };
 
-            if(playerB.ia && !playerA.checkVictory()){
+            if(playerB.botMode && !playerA.checkVictory()){
                 console.log('je suis ici');
-                setTimeout(evilChoice, 1000, playerA, playerB)
-                
+                setTimeout(evilChoice, 1000, playerA, playerB);  
             }
-              /*  setTimeout(evilChoice, 1000, playerA, playerB);
-                playerA.current = true;
-                playerB.current = false;
-                lightName();
-            } */
+             
     }
 }
-
-
-function evilChoice (playerA, playerB){
-        let random = Math.floor(Math.random() * 9);
-        if(cases[random].getAttribute(playerA.attr) || cases[random].getAttribute(playerB.attr)){
-            evilChoice(playerA, playerB);
-        } else {
-            cases[random].appendChild(playerB.createImg());
-            cases[random].setAttribute(playerB.attr, 'true');
-            playerA.current = true;
-            playerB.current = false;
-            lightName();
-            if(playerB.checkVictory()){
-                victory(playerB);
-                counter(playerB);
-            } else if(drawChecker()){
-                drawAnnouncer()
-            };
-        }
-       
-};
 
 /* =============================================================================
 ============================================================================= */
@@ -294,7 +270,7 @@ function drawChecker() {
     /* ____| RESTART FUNCTION |____ */
 
 function restart() {
-    if(secondPlayer.ia){
+    if(secondPlayer.botMode){
      for(let i=0; i < cases.length; i++){
         cases[i].removeAttribute(firstPlayer.attr);
         cases[i].removeAttribute(secondPlayer.attr);
@@ -335,12 +311,17 @@ function restart() {
     theWinnerIs.textContent = "";
     drawMessage.style.display = 'none';
 
+    firstPlayer.name = "Player One"
     firstPlayer.current = true;
     firstPlayer.wins = 0;
   
-
+    secondPlayer.name = "Player Two"
     secondPlayer.current = false;
     secondPlayer.wins = 0;
+    secondPlayer.botMode = false;
+
+    playerOneName.textContent = firstPlayer.name;
+    playerTwoName.textContent = secondPlayer.name;
 
     countOne.src = "";
     countTwo.src = "";
@@ -354,7 +335,63 @@ function restart() {
 ============================================================================= */
 
 /* =============================================================================
-== 7 =========== S T Y L E  A N D  S O U N D =============================== 7 =
+== 7 =========== B O T  M O D E  L A B ===================================== 7 =
+============================================================================= */
+
+function evilChoice (playerA, playerB){
+    let random = Math.floor(Math.random() * 9);
+    if(cases[random].getAttribute(playerA.attr) || cases[random].getAttribute(playerB.attr)){
+        evilChoice(playerA, playerB);
+    } else {
+        cases[random].appendChild(playerB.createImg());
+        cases[random].setAttribute(playerB.attr, 'true');
+        playerA.current = true;
+        playerB.current = false;
+        lightName();
+        if(playerB.checkVictory()){
+            victory(playerB);
+            counter(playerB);
+        } else if(drawChecker()){
+            drawAnnouncer()
+        };
+    }
+   
+};
+
+/* =============================================================================
+============================================================================= */
+
+/* =============================================================================
+== 8 =========== P L A Y E R  M O D E ====================================== 8 =
+============================================================================= */
+
+playerOneName.textContent = firstPlayer.name;
+playerTwoName.textContent = secondPlayer.name;
+
+function onePlayerMode(){
+    firstPlayer.name = prompt('Player 1 name :');
+    secondPlayer.name = prompt('Player 2 name :');
+    playerOneName.textContent = firstPlayer.name;
+    playerTwoName.textContent = secondPlayer.name;
+}
+
+function twoPlayersMode (){
+    firstPlayer.name = prompt('Player 1 name :');
+    secondPlayer.name = "Evil You";
+    secondPlayer.botMode = true;
+    playerOneName.textContent = firstPlayer.name;
+    playerTwoName.textContent = secondPlayer.name;
+}
+
+buttonOnePlayer.addEventListener('click', onePlayerMode);
+buttonTwoPlayers.addEventListener('click', twoPlayersMode);
+
+
+/* =============================================================================
+============================================================================= */
+
+/* =============================================================================
+== 9 =========== S T Y L E  A N D  S O U N D =============================== 9 =
 ============================================================================= */
 
     /* ____| light name FUNCTION |____ */
@@ -363,12 +400,10 @@ function lightName(){
     if(firstPlayer.current){
         playerOneName.className = "neon";
         playerTwoName.className  = "";
-        console.log('je suis dans lightname player 1 true');
     }
     else{
         playerTwoName.className  = "neon";
         playerOneName.className = "";
-        console.log('je suis dans lightname player 2 true');
     };
 };
 
