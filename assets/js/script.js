@@ -126,25 +126,37 @@ let secondPlayer = new player (
 == 2 =========== V A R I A B L E S ========================================= 2 =
 ============================================================================= */
 
+    /* ____| AUDIO |____ */
+
 let errorSound   = document.getElementById('error-sound');
 let victorySound = document.getElementById('victory-sound');
 let clearSound   = document.getElementById('clear-sound');
 let musicSound   = document.getElementById('music-sound');
+let ohNoDraw     = document.getElementById('oh-no-sound');
+let begin        = document.getElementById('begin-sound');
+
+    /* ____| FLYING |____ */
 
 let victoryMessage = document.querySelector('.flying-victory');
 let drawMessage    = document.querySelector('.flying-draw');
-let musicButton = document.querySelector('.game-music-button');
-let theWinnerIs = document.querySelector('.the-winner-is');
-let buttonOnePlayer = document.querySelector('.one-btn'); 
+
+    /* ____| BUTTONS |____ */
+
+let musicButton      = document.querySelector('.game-music-button');
+let buttonOnePlayer  = document.querySelector('.one-btn'); 
 let buttonTwoPlayers = document.querySelector('.two-btn');
 
-let cases = document.getElementsByClassName('case');
+    /* ____| TEXT CONTAINER |____ */
 
-let countOne = document.getElementById('player-one');
-let countTwo = document.getElementById('player-two');
+let theWinnerIs = document.querySelector('.the-winner-is');
 let playerOneName = document.getElementById('player-one-name');
 let playerTwoName = document.getElementById('player-two-name');
 
+    /* ____| PICS CONTAINER |____ */
+
+let cases = document.getElementsByClassName('case');
+let countOne = document.getElementById('player-one');
+let countTwo = document.getElementById('player-two');
 
 /* =============================================================================
 ============================================================================= */
@@ -257,7 +269,7 @@ function drawChecker() {
 
   function drawAnnouncer(){
     drawMessage.style.display = 'block';
-    /*drawBip.play();*/
+    ohNoDraw.play();
   }
 
 /* =============================================================================
@@ -283,7 +295,6 @@ function restart() {
     firstPlayer.current = true;
     secondPlayer.current = false;
     lightName();
-
 
     } else {
     for(let i=0; i < cases.length; i++){
@@ -328,7 +339,7 @@ function restart() {
 
     lightName();
 
-    /*clearSound.play();*/
+    clearSound.play();
   }
 
 /* =============================================================================
@@ -370,17 +381,21 @@ playerTwoName.textContent = secondPlayer.name;
 
 function onePlayerMode(){
     firstPlayer.name = prompt('Player 1 name :');
-    secondPlayer.name = prompt('Player 2 name :');
-    playerOneName.textContent = firstPlayer.name;
-    playerTwoName.textContent = secondPlayer.name;
-}
-
-function twoPlayersMode (){
-    firstPlayer.name = prompt('Player 1 name :');
     secondPlayer.name = "Evil You";
     secondPlayer.botMode = true;
     playerOneName.textContent = firstPlayer.name;
     playerTwoName.textContent = secondPlayer.name;
+    begin.play();
+    
+
+}
+
+function twoPlayersMode (){
+    firstPlayer.name = prompt('Player 1 name :');
+    secondPlayer.name = prompt('Player 2 name :');
+    playerOneName.textContent = firstPlayer.name;
+    playerTwoName.textContent = secondPlayer.name;
+    begin.play();
 }
 
 buttonOnePlayer.addEventListener('click', onePlayerMode);
