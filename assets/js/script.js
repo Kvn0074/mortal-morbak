@@ -192,7 +192,6 @@ function selectCase (theCase, playerA, playerB) {
             };
 
             if(playerB.botMode && !playerA.checkVictory()){
-                console.log('je suis ici');
                 setTimeout(evilChoice, 1000, playerA, playerB);  
             }
              
