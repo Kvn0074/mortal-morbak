@@ -72,6 +72,7 @@ body {
 .game-music-button {
     height: 40px;
     margin-right: 20px;
+    cursor: pointer;
 }
         /*__ M E D I A __*/
 
@@ -156,6 +157,7 @@ body {
     height: 100px;
     width: 100px;
     text-align: center;
+    cursor: pointer;
 }
 
 .vert {
@@ -180,6 +182,7 @@ body {
 
 .button {
     height: 65px;
+    cursor: pointer;
 }
 
 .player-btn-row {
@@ -220,7 +223,8 @@ body {
     display: none;
     position:absolute;
     top:calc(50% - 210px);
-    left:calc(50% - 150px); 
+    left:calc(50% - 150px);
+    cursor: pointer;
 }
 
 .flying-victory {
@@ -228,6 +232,7 @@ body {
     position:absolute;
     top:calc(50% - 65px);
     left:calc(50% - 150px);
+    cursor: pointer;
     
 }
 
