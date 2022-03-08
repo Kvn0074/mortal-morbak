@@ -135,6 +135,7 @@ let musicSound   = document.getElementById('music-sound');
 let ohNoDraw     = document.getElementById('oh-no-sound');
 let begin        = document.getElementById('begin-sound');
 
+
 begin.volume        = 0.6;
 ohNoDraw.volume     = 0.4;
 musicSound.volume   = 0.6;
