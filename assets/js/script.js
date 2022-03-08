@@ -135,6 +135,13 @@ let musicSound   = document.getElementById('music-sound');
 let ohNoDraw     = document.getElementById('oh-no-sound');
 let begin        = document.getElementById('begin-sound');
 
+begin.volume        = 0.6;
+ohNoDraw.volume     = 0.4;
+musicSound.volume   = 0.6;
+clearSound.volume   = 0.2;
+victorySound.volume = 0.4;
+errorSound.volume   = 0.2;
+
     /* ____| FLYING |____ */
 
 let victoryMessage = document.querySelector('.flying-victory');
@@ -379,6 +386,7 @@ playerOneName.textContent = firstPlayer.name;
 playerTwoName.textContent = secondPlayer.name;
 
 function onePlayerMode(){
+    clearAll()
     firstPlayer.name = prompt('Player 1 name :');
     secondPlayer.name = "Evil You";
     secondPlayer.botMode = true;
@@ -390,6 +398,7 @@ function onePlayerMode(){
 }
 
 function twoPlayersMode (){
+    clearAll()
     firstPlayer.name = prompt('Player 1 name :');
     secondPlayer.name = prompt('Player 2 name :');
     playerOneName.textContent = firstPlayer.name;

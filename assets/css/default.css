@@ -174,7 +174,7 @@ body {
 
 .restart-btn-col{
     text-align: center;
-    margin-top: 40px;
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 
@@ -190,10 +190,17 @@ body {
     text-align: right;
 }
 
+.one-btn-col,
+.two-btn-col {
+    margin-top: 40px;
+}
+
         /*__ M E D I A __*/
 
 @media screen and (min-width: 768px) {
-    .restart-btn-col {
+    .restart-btn-col,
+    .one-btn-col,
+    .two-btn-col {
         margin: 0;
     }
     .button {
