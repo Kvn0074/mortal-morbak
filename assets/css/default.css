@@ -74,6 +74,14 @@ body {
     margin-right: 20px;
     cursor: pointer;
 }
+
+.game-mode {
+    text-align: center;
+    font-size: 2.3em;
+    margin: 0;
+    text-shadow: var(--shadowGreen);
+
+}
         /*__ M E D I A __*/
 
 @media screen and (min-width: 1024px) {

@@ -155,13 +155,14 @@ let buttonTwoPlayers = document.querySelector('.two-btn');
 
     /* ____| TEXT CONTAINER |____ */
 
-let theWinnerIs = document.querySelector('.the-winner-is');
+let playMode      = document.querySelector('.game-mode');
+let theWinnerIs   = document.querySelector('.the-winner-is');
 let playerOneName = document.getElementById('player-one-name');
 let playerTwoName = document.getElementById('player-two-name');
 
     /* ____| PICS CONTAINER |____ */
 
-let cases = document.getElementsByClassName('case');
+let cases    = document.getElementsByClassName('case');
 let countOne = document.getElementById('player-one');
 let countTwo = document.getElementById('player-two');
 
@@ -339,6 +340,7 @@ function restart() {
 
     playerOneName.textContent = firstPlayer.name;
     playerTwoName.textContent = secondPlayer.name;
+    playMode.textContent = 'Fast Game';
 
     countOne.src = "";
     countTwo.src = "";
@@ -392,6 +394,7 @@ function onePlayerMode(){
     secondPlayer.botMode = true;
     playerOneName.textContent = firstPlayer.name;
     playerTwoName.textContent = secondPlayer.name;
+    playMode.textContent = 'One Player'
     begin.play();
     
 
@@ -403,6 +406,7 @@ function twoPlayersMode (){
     secondPlayer.name = prompt('Player 2 name :');
     playerOneName.textContent = firstPlayer.name;
     playerTwoName.textContent = secondPlayer.name;
+    playMode.textContent = 'Two Players'
     begin.play();
 }
 
