@@ -391,6 +391,9 @@ playerTwoName.textContent = secondPlayer.name;
 function onePlayerMode(){
     clearAll()
     firstPlayer.name = prompt('Player 1 name :');
+        if (firstPlayer.name == ""){
+            firstPlayer.name = "Player One";
+        }
     secondPlayer.name = "Evil You";
     secondPlayer.botMode = true;
     playerOneName.textContent = firstPlayer.name;
@@ -404,7 +407,13 @@ function onePlayerMode(){
 function twoPlayersMode (){
     clearAll()
     firstPlayer.name = prompt('Player 1 name :');
+        if (firstPlayer.name == ""){
+            firstPlayer.name = "Player One";
+        }
     secondPlayer.name = prompt('Player 2 name :');
+        if (secondPlayer.name == ""){
+            secondPlayer.name = "Player Two";
+        }
     playerOneName.textContent = firstPlayer.name;
     playerTwoName.textContent = secondPlayer.name;
     playMode.textContent = 'Two Players'
