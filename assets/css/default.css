@@ -45,6 +45,30 @@ body {
     color: rgb(157, 255, 0);
 }
 
+@media screen and (min-width: 1024px) and (min-height: 950px) {
+    body {
+        background: url(../pics/morbak-overlay.jpg);
+        background-size: 100% 100%;
+    }
+
+    .game-container {
+        margin-left: 200px;
+        margin-right: 200px;
+        padding-top: 60px;
+        min-height: 700px;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+
+    .game-container {
+        margin-left: 400px;
+        margin-right: 400px;
+        padding-top: 150px;
+        min-height: 700px;
+    }
+}
+
 
 /*=========================================*/
 /*=============| H E A D E R |=============*/
@@ -86,6 +110,7 @@ body {
 
 @media screen and (min-width: 1024px) {
     .game-title {
+        margin-top: 10px;
         width: 500px;
     }
 }
