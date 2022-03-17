@@ -103,7 +103,7 @@ let firstPlayer = new player (
     true,
     1,
     false,
-    "assets/pics/fuPic.png",
+    "assets/pics/fistPic.png",
     "byOne",
     "picPlayerOne"
 );
