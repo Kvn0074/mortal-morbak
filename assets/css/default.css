@@ -45,7 +45,9 @@ body {
     color: rgb(157, 255, 0);
 }
 
-@media screen and (min-width: 1024px) and (min-height: 950px) {
+        /*__ M E D I A __*/
+
+@media screen and (min-width: 1024px) and (min-height: 900px) {
     body {
         background: url(../pics/morbak-overlay.jpg);
         background-size: 100% 100%;
@@ -64,8 +66,7 @@ body {
     .game-container {
         margin-left: 400px;
         margin-right: 400px;
-        padding-top: 150px;
-        min-height: 700px;
+      
     }
 }
 
@@ -290,6 +291,34 @@ body {
     text-shadow: var(--shadowYellow);
 }
 
+        /*__ M E D I A __*/
+
+@media screen and (min-width: 1024px) {
+    .draw-pic {
+        width: 450px;
+    }
+
+    .flying-draw {
+        top:calc(50% - 280px);
+        left:calc(50% - 225px);
+    }
+
+    .victory-pic {
+        width: 600px;
+    }
+
+
+    .flying-victory {
+        top:calc(50% - 130px);
+        left:calc(50% - 300px);
+    }
+
+    .the-winner-is {
+        font-size: 4.5em;
+        margin-top: 10px; 
+    }
+}
+
 /*=========================================*/
 /*=============| F O O T E R |=============*/
 /*=========================================*/
@@ -301,6 +330,17 @@ body {
     margin: 40px;
     margin-bottom: 10px;
 }
+
+
+        /*__ M E D I A __*/
+
+@media screen and (min-width: 1024px) and (min-height: 900px){
+    .footer-text{
+        margin-top: 10px;
+    }
+}
+
+
 
 /*=========================================*/
 /*=========================================*/
